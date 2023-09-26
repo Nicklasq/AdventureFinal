@@ -5,8 +5,9 @@ public class Main {
         UserInterface ui = new UserInterface();
         ui.startProgram();
         //Scanner input =
+        }
     }
+
 
     //GameRoom myGameRoom = new GameRoom();
         //myGameRoom.buildRoom();
-}
