@@ -6,9 +6,12 @@ public class UserInterface {
     boolean isRunning = true;
     public void startProgram() {
         Scanner scanner = new Scanner(System.in);
+            GameEngine gameEngine = new GameEngine();
 
+        gameEngine.callBuildRoom();
+        
         // Build the rooms
-        gameEngine.buildRoom();
+        //gameEngine.buildRoom();
 
         do {
             // Print the current room's description
@@ -40,6 +43,7 @@ public class UserInterface {
             }
         } while(isRunning);
     }
+
 
     public static void main(String[] args) {
         UserInterface userInterface = new UserInterface();
