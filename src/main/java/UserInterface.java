@@ -1,52 +1,34 @@
 import java.util.Scanner;
-
+//sophus
 public class UserInterface {
-    private GameEngine gameEngine = new GameEngine();
-    //sophus
-    boolean isRunning = true;
-    public void startProgram() {
-        Scanner scanner = new Scanner(System.in);
-            GameEngine gameEngine = new GameEngine();
 
-        gameEngine.callBuildRoom();
-        
-        // Build the rooms
-        //gameEngine.buildRoom();
+    Scanner scanner = new Scanner(System.in);
 
-        do {
-            // Print the current room's description
-            Room current = gameEngine.getCurrent();
-            System.out.println(current.getDescription());
+    public String getUserInput(){
+        return scanner.nextLine();
+    }
 
-            // Get player's input
-            System.out.print("Enter a direction (North, East, South, West, or Look): ");
-            String direction = scanner.nextLine().toLowerCase();
+    public void printCurrentRoom(Room room){
 
-            // Handle player's actions
-            switch (direction) {
-                case "look":
-                    // The player wants to look at the current room
-                    //System.out.println(current.getDescription());
-                    break;
-                case "north":
-                case "east":
-                case "south":
-                case "west":
-                    gameEngine.move(direction);
-                    break;
-//                case "Exit":
-//                //System.out.println("Thanks for playing");
-//                    isRunning = false;
-//                break;
-                default:
-                    System.out.println("Invalid command. Try again.");
-            }
-        } while(isRunning);
+        String line = "Room: " + room.getName() +
+                      "\nDescriptiohn: " + room.getDescription();
+        System.out.println(line);
+    }
+
+    public void printRoomItems(Room room){
+        String line = "Items in the " + room.getName();
+
+        System.out.println(line);
+        for (Item item: room.getItems()) {
+            System.out.println(item.getName());
+
+
+        }
+       
     }
 
 
-    public static void main(String[] args) {
-        UserInterface userInterface = new UserInterface();
-        userInterface.startProgram();
+    public void welcome(){
+        System.out.println("Welcome To The Naughty Adventure Game");
     }
 }
