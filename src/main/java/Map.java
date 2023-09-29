@@ -1,9 +1,9 @@
 public class Map {
 
-   private Room entrance, kitchen, diningRoom, garage, bedRoom, office, bathRoom, hallWay, livingRoom;
+    private Room entrance, kitchen, diningRoom, garage, bedRoom, office, bathRoom, hallWay, livingRoom;
 
-// we need items'
-     public void createMap(){
+    // we need items'
+    public void createMap() {
         // Define rooms and their descriptions
         entrance = new Room("Entrance", """
         --------------------------------------------|
@@ -123,75 +123,75 @@ public class Map {
     }
 
 
-   public Room getEntrance() {
-      return entrance;
-   }
+    public Room getEntrance() {
+        return entrance;
+    }
 
-   public void setEntrance(Room entrance) {
-      this.entrance = entrance;
-   }
+    public void setEntrance(Room entrance) {
+        this.entrance = entrance;
+    }
 
-   public Room getKitchen() {
-      return kitchen;
-   }
+    public Room getKitchen() {
+        return kitchen;
+    }
 
-   public void setKitchen(Room kitchen) {
-      this.kitchen = kitchen;
-   }
+    public void setKitchen(Room kitchen) {
+        this.kitchen = kitchen;
+    }
 
-   public Room getDiningRoom() {
-      return diningRoom;
-   }
+    public Room getDiningRoom() {
+        return diningRoom;
+    }
 
-   public void setDiningRoom(Room diningRoom) {
-      this.diningRoom = diningRoom;
-   }
+    public void setDiningRoom(Room diningRoom) {
+        this.diningRoom = diningRoom;
+    }
 
-   public Room getGarage() {
-      return garage;
-   }
+    public Room getGarage() {
+        return garage;
+    }
 
-   public void setGarage(Room garage) {
-      this.garage = garage;
-   }
+    public void setGarage(Room garage) {
+        this.garage = garage;
+    }
 
-   public Room getBedRoom() {
-      return bedRoom;
-   }
+    public Room getBedRoom() {
+        return bedRoom;
+    }
 
-   public void setBedRoom(Room bedRoom) {
-      this.bedRoom = bedRoom;
-   }
+    public void setBedRoom(Room bedRoom) {
+        this.bedRoom = bedRoom;
+    }
 
-   public Room getOffice() {
-      return office;
-   }
+    public Room getOffice() {
+        return office;
+    }
 
-   public void setOffice(Room office) {
-      this.office = office;
-   }
+    public void setOffice(Room office) {
+        this.office = office;
+    }
 
-   public Room getBathRoom() {
-      return bathRoom;
-   }
+    public Room getBathRoom() {
+        return bathRoom;
+    }
 
-   public void setBathRoom(Room bathRoom) {
-      this.bathRoom = bathRoom;
-   }
+    public void setBathRoom(Room bathRoom) {
+        this.bathRoom = bathRoom;
+    }
 
-   public Room getHallWay() {
-      return hallWay;
-   }
+    public Room getHallWay() {
+        return hallWay;
+    }
 
-   public void setHallWay(Room hallWay) {
-      this.hallWay = hallWay;
-   }
+    public void setHallWay(Room hallWay) {
+        this.hallWay = hallWay;
+    }
 
-   public Room getLivingRoom() {
-      return livingRoom;
-   }
+    public Room getLivingRoom() {
+        return livingRoom;
+    }
 
-   public void setLivingRoom(Room livingRoom) {
-      this.livingRoom = livingRoom;
-   }
+    public void setLivingRoom(Room livingRoom) {
+        this.livingRoom = livingRoom;
+    }
 }
