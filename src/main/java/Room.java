@@ -68,8 +68,9 @@ public class Room {
     public void setWest(Room west) {
         this.west = west;
     }
-    public void addItem(Item i){
-            items.add(i);
+
+    public void addItem(Item i) {
+        items.add(i);
     }
 
     public ArrayList<Item> getItems() {

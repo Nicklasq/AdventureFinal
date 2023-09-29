@@ -6,7 +6,7 @@ public class Map {
      public void createMap(){
         // Define rooms and their descriptions
         entrance = new Room("Entrance", """
-        --------------------------------------------------------|
+        --------------------------------------------|
         As you step inside the entrance,                        |      
         a spine-tingling chill surrounds you.                   |     
         The entrance hall is dimly lit with cobwebs everywhere, |    
@@ -15,7 +15,7 @@ public class Map {
         --------------------------------------------------------|
         """);
         kitchen = new Room("Kitchen", """
-       ---------------------------------------------------------|
+       --------------------------------------------|            
        Entering the kitchen, you feel another chilling gust of  |   
        air. It's a gloomy sight, with cracked, stained tiles on |    
        the floor, a flickering, broken chandelier, and shadows  |       
@@ -27,7 +27,7 @@ public class Map {
        ---------------------------------------------------------|
         """);
         diningRoom = new Room("Dining Room", """
-       ---------------------------------------------------------|
+       --------------------------------------------|               
        Stepping into the dining room, the atmosphere remains    |      
        eerie. Dim light reveals a table covered in dust,        |       
        frozen in time. Cobwebs hang like spectral drapes,       |      
@@ -35,7 +35,7 @@ public class Map {
        ---------------------------------------------------------|
         """);
         garage = new Room("Garage", """
-       ---------------------------------------------------------|
+       --------------------------------------------|
        In the garage, shadows play on rusted tools and          |  
        forgotten machinery. The air is thick with the           |    
        cent of oil and decay, and the silence is broken         |     
@@ -43,7 +43,7 @@ public class Map {
        ---------------------------------------------------------|
         """);
         bedRoom = new Room("Bedroom", """
-       ---------------------------------------------------------|
+       --------------------------------------------|
        In the bedroom, a heavy sense of sorrow hangs in the air.| 
        The bed is unmade, and the room is in disarray.          | 
        The window curtains sway as if in mourning,              |     
@@ -51,7 +51,7 @@ public class Map {
        ---------------------------------------------------------|
         """);
         office = new Room("Office", """
-       ---------------------------------------------------------|
+       --------------------------------------------|
        The office is a haunting scene, with dusty,              |
        neglected papers strewn about. A broken desk chair       |  
        sits motionless, and the dim light barely illuminates    |   
@@ -59,7 +59,7 @@ public class Map {
        ---------------------------------------------------------|
         """);
         bathRoom = new Room("Bathroom", """
-       ---------------------------------------------------------|
+       --------------------------------------------|
        The bathroom offers no respite from the foreboding.      |   
        Cracked tiles and a shattered mirror reflect a           |    
        grim picture. The faucet drips incessantly,              |   
@@ -67,7 +67,7 @@ public class Map {
        ---------------------------------------------------------|
         """);
         hallWay = new Room("Hallway", """
-       ---------------------------------------------------------|
+       --------------------------------------------|
        As you move through the hallway, the walls seem to       |
        close in on you. The faded wallpaper is peeling,         |     
        and the floorboards creak beneath your feet.             |   
@@ -75,7 +75,7 @@ public class Map {
        ---------------------------------------------------------|
         """);
         livingRoom = new Room("Living Room", """
-       ---------------------------------------------------------|
+       --------------------------------------------|
        Entering the living room, you're greeted by tattered     |
        furniture and an air of desolation. The remains of a     |    
        once-warm fireplace now stand cold and lifeless.         |     
@@ -114,14 +114,14 @@ public class Map {
         livingRoom.setWest(hallWay);
 
 
-        //create items
-Item knife = new Item("Big Fat Knife");
-kitchen.addItem(knife);
+// Create and add items to rooms
+        Item knife = new Item("knife", "Big Fat Juicy Looking Knife With Sweeping Egde III and Looting III");
+        kitchen.addItem(knife);
 
-Item hammer = new Item("hammer");
-garage.addItem(hammer);
-
+        Item hammer = new Item("hammer", "Useful weapon");
+        garage.addItem(hammer);
     }
+
 
    public Room getEntrance() {
       return entrance;
