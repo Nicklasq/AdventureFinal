@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class Player {
     private Room current;
+    private ArrayList<Item> inventory = new ArrayList<>();
 
-    //private ArrayList<Item>inventory;
 
 
 
@@ -21,14 +21,15 @@ public class Player {
         this.current = current;
     }
 
-    public class Inventory {
-        private ArrayList<Item> items = new ArrayList<Item>();
 
-        public Inventory() {
-            this.items.add(new Item("Knife"));
-            this.items.add(new Item("Note"));
-        }
-    }
+//    public class Inventory {
+//        private ArrayList<Item> items = new ArrayList<Item>();
+//
+//       public Inventory() {
+//            this.items.add(new Item("Knife"));
+//            this.items.add(new Item("Note"));
+//        }
+//    }
 
     public void move(String direction) {
         // Check if the direction is valid for the current room
@@ -36,16 +37,16 @@ public class Player {
         //String direction = scanner.nextLine().toLowerCase();
 
         switch (direction) {
-            case "north", "go north", "n":
+            case "north", "go-north", "n":
                 nextRoom = current.getNorth();
                 break;
-            case "east":
+            case "east", "go-east", "e":
                 nextRoom = current.getEast();
                 break;
-            case "south":
+            case "south", "go-south", "s":
                 nextRoom = current.getSouth();
                 break;
-            case "west":
+            case "west", "go-west", "w":
                 nextRoom = current.getWest();
                 break;
         }
@@ -62,16 +63,18 @@ public class Player {
         System.out.println("""
                 -------------------------------------------------|
                     Movement Commands:                           |   
-                    Type "go north" to move north.               |      
-                    Type "go south" to move south.               |       
-                    Type "go east" to move east.                 |       
-                    Type "go west" to move west.                 | 
-                    Type "pick up (item) to pick up an item      |    
-                    Type "drop (item) to srop an item            |     
+                    Type "go-north" to move north.               |      
+                    Type "go-south" to move south.               |       
+                    Type "go-east" to move east.                 |       
+                    Type "go-west" to move west.                 | 
+                    Type "take (item)" to pick up an item        |    
+                    Type "drop (item)" to drop an item           |     
                                                                  |           
                     Interaction Commands:                        |  
                     Type "look" or to examine your surroundings. |
-                    Type "Inventory" to look at your Inventory   |       
+                    Type "Inventory" to look at your Inventory   |
+                    type "read" to read a note                   |
+                    type "search" to search a dead body          |       
                                                                  |            
                     Menu and Help Commands:                      |        
                     Type "help" to display this help menu.       |          
@@ -79,4 +82,137 @@ public class Player {
                 -------------------------------------------------|
                     """);
     }
+
+    public boolean takeItem(String itemName) {
+        Room currentRoom = getCurrent();
+        ArrayList<Item> roomItems = currentRoom.getItems();
+
+        for (Item item : roomItems) {
+            if (item.getName().equalsIgnoreCase(itemName)) {
+                inventory.add(item);
+                roomItems.remove(item);
+                System.out.println("You took a " + itemName + ".");
+                return true;
+            }
+        }
+        System.out.println("There is no " + itemName + " in this room.");
+        return false;
+    }
+
+    public void showInventory() {
+        if (inventory.isEmpty()) {
+            System.out.println("Your inventory is empty.");
+        } else {
+            System.out.println("Items in your inventory:");
+            for (Item item : inventory) {
+                System.out.println(item.getName());
+            }
+        }
+    }
+
+    public boolean dropItem(String itemName) {
+        for (Item item : inventory) {
+            if (item.getName().equalsIgnoreCase(itemName)) {
+                current.getItems().add(item);
+                inventory.remove(item);
+                System.out.println("You dropped the " + itemName + ".");
+                return true;
+            }
+        }
+        System.out.println("You do not have " + itemName + " in your inventory.");
+        return false;
+    }
+
+
+
+    public String eat(String foodName) {
+        Room currentRoom = getCurrent();
+        ArrayList<Food> roomFoodItems = currentRoom.getFoodItems();
+
+        for (Food food : roomFoodItems) {
+            if (food.getName().equalsIgnoreCase(foodName)) {
+                int healthChange = food.getHealthPoints();
+                currentRoom.getFoodItems().remove(food);
+
+                if (healthChange > 0) {
+                    // Positive health change
+                    inventory.remove(food);
+                    return "You ate the " + foodName + " and gained " + healthChange + " health points.";
+                } else if (healthChange < 0) {
+                    // Negative health change
+                    inventory.remove(food);
+                    return "You ate the " + foodName + " and lost " + (-healthChange) + " health points.";
+                }
+            }
+        }
+
+        return "There is no " + foodName + " to eat.";
+    }
+
+
+    public boolean readNote() {
+        Room currentRoom = getCurrent();
+        ArrayList<Item> roomItems = currentRoom.getItems();
+
+        for (Item item : roomItems) {
+            if (item.getName().equalsIgnoreCase("note1")) {
+                System.out.println("""
+                        **********************************************************************|
+                        SEND HELP!!!                                                          |
+                                                                                              |
+                        I'm writing in sheer desperation to warn you                          |
+                        about the horrors that dwell within this wretched house.              |
+                        Monstrous entities haunt these halls, relentlessly seeking the living.|
+                        Beware the shifting shadows, chilling whispers,                       |
+                        and grotesque apparitions that lurk here.                             |
+                        They are real, and they hunger for you.                               |           
+                        You need a key to unlock the entrance door to freedom,                |
+                        not sure where it is I'm going to try to find it.                     |
+                        But trust not your senses, this place distorts reality.               |                             
+                        My life hangs by a thread, and I'm not sure if I'll survive.          |
+                        **********************************************************************|
+                        """);
+                return true;
+            }
+        }
+        System.out.println("There is no note in this room to read.");
+        return false;
+    }
+
+    public boolean readNote2() {
+        Room currentRoom = getCurrent();
+        ArrayList<Item> roomItems = currentRoom.getItems();
+
+        for (Item item : roomItems) {
+            if (item.getName().equalsIgnoreCase("note2")) {
+                System.out.println("""
+                        TEST (write something about note2)
+                        """);
+                return true;
+            }
+
+        }
+        System.out.println("There is no note in this room to read.");
+        return false;
+    }
+
+    public boolean readNote3() {
+        Room currentRoom = getCurrent();
+        ArrayList<Item> roomItems = currentRoom.getItems();
+
+        for (Item item : roomItems) {
+            if (item.getName().equalsIgnoreCase("note3")) {
+                System.out.println("""
+                        TEST (write something about note3)
+                        """);
+                return true;
+            }
+
+        }
+        System.out.println("There is no note in this room to read.");
+        return false;
+    }
 }
+
+
+

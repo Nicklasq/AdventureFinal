@@ -11,6 +11,9 @@ public class Room {
     private Room west;
 
     private ArrayList<Item> items;
+    private ArrayList<Food> foodItems;
+
+
 
 
     public Room(String name, String description) {
@@ -20,8 +23,18 @@ public class Room {
         this.north = null;
         this.south = null;
         this.west = null;
-        items = new ArrayList<>();
+        this.items = new ArrayList<>();
+        foodItems = new ArrayList<>();
     }
+
+    //public void addFood(Food food) {
+    //    foodItems.add(food);
+    //}
+
+    public ArrayList<Food> getFoodItems() {
+        return foodItems;
+    }
+
 
     //getter
     public String getName() {
@@ -72,7 +85,19 @@ public class Room {
             items.add(i);
     }
 
+    public void addItem(Food food) {
+        foodItems.add(food);
+    }
+
     public ArrayList<Item> getItems() {
         return items;
+    }
+
+    public void addFood(Food food) {
+        foodItems.add(food);
+    }
+
+    public void removeFood(Food food) {
+        foodItems.remove(food);
     }
 }

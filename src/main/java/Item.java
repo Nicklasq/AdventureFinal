@@ -5,6 +5,9 @@ public class Item {
         this.name = name;
     }
 
+    public Item(String name, String description) {
+    }
+
     public String getName() {
         return name;
     }
