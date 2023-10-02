@@ -116,9 +116,9 @@ public class Map {
 
         // Create Food objects and add them to rooms
         Food apple = new Food("Apple", "A fresh red apple.", 10);
-        kitchen.addItem(apple);
+        kitchen.addFood(apple);
 
-        Food pizza = new Food("Pizza", "A delicious slice of pizza.", 20);
+        Food pizza = new Food("pizza", "A delicious slice of pizza.", 20);
         diningRoom.addItem(pizza);
 
 // Create and add items to rooms

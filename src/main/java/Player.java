@@ -4,9 +4,20 @@ import java.util.ArrayList;
 public class Player {
     private Room current;
     private ArrayList<Item> inventory = new ArrayList<>();
+    private int health;
 
+    //players health
+    public Player() {
+        this.health = 80; // Full health is at 100
+    }
 
+    public int getHealth() {
+        return health;
+    }
 
+    public void setHealth(int health) {
+        this.health = health;
+    }
 
     public void setInitialRoom(Room current){
         this.current = current;
@@ -73,7 +84,8 @@ public class Player {
                     Interaction Commands:                        |  
                     Type "look" or to examine your surroundings. |
                     Type "Inventory" to look at your Inventory   |
-                    type "read" to read a note                   |
+                    Type "health" to look at your current healt  |
+                    type "read (notes name)" to read a note      |
                     type "search" to search a dead body          |       
                                                                  |            
                     Menu and Help Commands:                      |        
@@ -129,7 +141,13 @@ public class Player {
         Room currentRoom = getCurrent();
         ArrayList<Food> roomFoodItems = currentRoom.getFoodItems();
 
+        // Check if foodName is empty or null
+        if (foodName == null || foodName.isEmpty()) {
+            return "Please specify the name of the food you want to eat.";
+        }
+
         for (Food food : roomFoodItems) {
+            // Check if the foodName matches, ignoring case
             if (food.getName().equalsIgnoreCase(foodName)) {
                 int healthChange = food.getHealthPoints();
                 currentRoom.getFoodItems().remove(food);
@@ -137,10 +155,12 @@ public class Player {
                 if (healthChange > 0) {
                     // Positive health change
                     inventory.remove(food);
+                    setHealth(getHealth() + healthChange); // Increase player's health
                     return "You ate the " + foodName + " and gained " + healthChange + " health points.";
                 } else if (healthChange < 0) {
                     // Negative health change
                     inventory.remove(food);
+                    setHealth(getHealth() - healthChange); // Decrease player's health
                     return "You ate the " + foodName + " and lost " + (-healthChange) + " health points.";
                 }
             }
@@ -213,6 +233,4 @@ public class Player {
         return false;
     }
 }
-
-
 

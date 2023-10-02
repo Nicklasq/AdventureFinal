@@ -21,6 +21,7 @@ public class Adventure {
             String command = inputParts[0];
             String itemName = (inputParts.length > 1) ? inputParts[1] : "";
 
+
             //need to fix so you can type 'go south' or 's'
             switch (command) {
                 case "north", "go-north", "n", "south", "go-south", "s", "east", "go-east", "e", "west", "go-west", "w":
@@ -44,6 +45,14 @@ public class Adventure {
                     break;
                 case "inventory":
                     player.showInventory();
+                    break;
+                case "eat":
+                    player.eat(itemName);
+                    String eatStatus = player.eat(itemName);
+                    System.out.println(eatStatus);
+                    break;
+                case "health":
+                    System.out.println("Your current health: " + player.getHealth());
                     break;
                 case "read":
                     if (itemName.equals("note1")) {

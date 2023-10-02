@@ -19,11 +19,18 @@ public class UserInterface {
 
 
     public void printRoomItems(Room room){
+        System.out.println("Debug: Current room name: " + room.getName());
         String line = "You look around and see these items in the " + room.getName();
 
         System.out.println(line);
+
         for (Item item: room.getItems()) {
             System.out.println(item.getName());
+        }
+
+        // Display food items
+        for (Food food: room.getFoodItems()) {
+            System.out.println(food.getName());
         }
     }
 

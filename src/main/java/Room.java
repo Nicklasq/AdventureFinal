@@ -27,9 +27,6 @@ public class Room {
         foodItems = new ArrayList<>();
     }
 
-    //public void addFood(Food food) {
-    //    foodItems.add(food);
-    //}
 
     public ArrayList<Food> getFoodItems() {
         return foodItems;
