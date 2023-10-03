@@ -3,56 +3,65 @@ import java.util.ArrayList;
 
 public class UserInterface {
 
-    Scanner scanner = new Scanner(System.in);
 
-    public String getUserInput() {
-        return scanner.nextLine();
-    }
 
-    public void printCurrentRoom(Room room) {
+    public void printCurrentRoom(Room room){
         String line = "Room: " + room.getName() +
                 "\nDescription: " + room.getDescription();
         System.out.println(line);
     }
 
-    public void printRoomItems(Room room) {
-        String line = "Items in the " + room.getName();
+    Scanner scanner = new Scanner(System.in);
+
+    public String getUserInput(){
+        return scanner.nextLine();
+    }
+
+
+    public void printRoomItems(Room room){
+        System.out.println("Debug: Current room name: " + room.getName());
+        String line = "You look around and see these items in the " + room.getName();
 
         System.out.println(line);
-        for (Item item : room.getItems()) {
-            System.out.println(item.getName() + item.getDescription());
+
+        for (Item item: room.getItems()) {
+            System.out.println(item.getName());
+        }
+
+        // Display food items
+        for (Food food: room.getFoodItems()) {
+            System.out.println(food.getName());
         }
     }
 
-    public void welcome() {
-        System.out.println("Welcome To The Naughty Adventure Game" +
-                "" +
-                "\nObjective: Your goal is to explore the haunted house, find the key to unlock the entrance door, and escape the mansion while dealing with supernatural enemies.");
+    public void printTakeItem(String itemName) {
+        System.out.println("You took a " + itemName + ".");
     }
 
-                    public void helpMenu() {
-                            System.out.println("""
-                                    -------------------------------------------------|
-                                        Movement Commands:                           |   
-                                        Type "go north" to move north.               |      
-                                        Type "go south" to move south.               |       
-                                        Type "go east" to move east.                 |       
-                                        Type "go west" to move west.                 | 
-                                        Type "pick up (item) to pick up an item      |    
-                                        Type "drop (item) to srop an item            |     
-                                                                                     |           
-                                        Interaction Commands:                        |  
-                                        Type "look" or to examine your surroundings. |
-                                        Type "Inventory" to look at your Inventory   |       
-                                                                                     |            
-                                        Menu and Help Commands:                      |        
-                                        Type "help" to display this help menu.       |          
-                                        Type "quit" to exit the game.                |        
-                                    -------------------------------------------------|
-                                        """);
-                        }
+    public void printDropItem(String itemName) {
+        System.out.println("You dropped the " + itemName + ".");
+    }
 
+    public void printNoItemInRoom(String itemName) {
+        System.out.println("There is no " + itemName + " in this room.");
+    }
 
+    public void printNoItemInInventory(String itemName) {
+        System.out.println("You do not have " + itemName + " in your inventory.");
+    }
 
+    public void welcome(){
+        System.out.println("""
+        --------------------------------------------------------|
+        You wake up in the entrance of an old and spooky house, |      
+        a spine-tingling chill surrounds you.                   |     
+        The entrance hall is dimly lit with cobwebs everywhere, |    
+        creaky floors, and a lingering sense of fear.           |
+        You try to open the exit door but its locked.           |
+        Your adventure into darkness has begun.                 |  
+        (type 'help' to see what your options are)              |
+        --------------------------------------------------------|
+        """);
+    }
 
 }
