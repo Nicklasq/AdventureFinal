@@ -19,7 +19,7 @@ public class Player {
         this.health = health;
     }
 
-    public void setInitialRoom(Room current){
+    public void setInitialRoom(Room current) {
         this.current = current;
 
     }
@@ -70,30 +70,6 @@ public class Player {
         }
     }
 
-    public void helpMenu(){
-        System.out.println("""
-                -------------------------------------------------|
-                    Movement Commands:                           |   
-                    Type "go-north" to move north.               |      
-                    Type "go-south" to move south.               |       
-                    Type "go-east" to move east.                 |       
-                    Type "go-west" to move west.                 | 
-                    Type "take (item)" to pick up an item        |    
-                    Type "drop (item)" to drop an item           |     
-                                                                 |           
-                    Interaction Commands:                        |  
-                    Type "look" or to examine your surroundings. |
-                    Type "Inventory" to look at your Inventory   |
-                    Type "health" to look at your current healt  |
-                    type "read (notes name)" to read a note      |
-                    type "search" to search a dead body          |       
-                                                                 |            
-                    Menu and Help Commands:                      |        
-                    Type "help" to display this help menu.       |          
-                    Type "quit" to exit the game.                |        
-                -------------------------------------------------|
-                    """);
-    }
 
     public boolean takeItem(String itemName) {
         Room currentRoom = getCurrent();
@@ -110,6 +86,23 @@ public class Player {
         System.out.println("There is no " + itemName + " in this room.");
         return false;
     }
+
+    public boolean takeFood(String foodName) {
+        Room currentRoom = getCurrent();
+        ArrayList<Food> roomFood = currentRoom.getFoodItems();
+        for (Food food : roomFood) {
+            if (food.getName().equalsIgnoreCase(foodName)) {
+                inventory.add(food);
+                roomFood.remove(food);
+                System.out.println("You took " + foodName + ".");
+                return true;
+            }
+        }
+        System.out.println("Theres is no " + foodName + " in this room.");
+        return false;
+
+    }
+
 
     public void showInventory() {
         if (inventory.isEmpty()) {
@@ -142,7 +135,7 @@ public class Player {
         ArrayList<Food> roomFoodItems = currentRoom.getFoodItems();
 
         // Check if foodName is empty or null
-        if (foodName == null || foodName.isEmpty()) {
+        if (foodName == null   || foodName.isEmpty()) {
             return "Please specify the name of the food you want to eat.";
         }
 

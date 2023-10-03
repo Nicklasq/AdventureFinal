@@ -63,5 +63,30 @@ public class UserInterface {
         --------------------------------------------------------|
         """);
     }
+    public void helpMenu(){
+            System.out.println("""
+                    -------------------------------------------------|
+                        Movement Commands:                           |   
+                        Type "go-north" to move north.               |      
+                        Type "go-south" to move south.               |       
+                        Type "go-east" to move east.                 |       
+                        Type "go-west" to move west.                 | 
+                        Type "take (item)" to pick up an item        |    
+                        Type "drop (item)" to drop an item           |     
+                                                                     |           
+                        Interaction Commands:                        |  
+                        Type "look" or to examine your surroundings. |
+                        Type "Inventory" to look at your Inventory   |
+                        Type "health" to look at your current healt  |
+                        type "read (notes name)" to read a note      |
+                        type "search" to search a dead body          |       
+                                                                     |            
+                        Menu and Help Commands:                      |        
+                        Type "help" to display this help menu.       |          
+                        Type "quit" to exit the game.                |        
+                    -------------------------------------------------|
+                        """);
+        }
+
 
 }

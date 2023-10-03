@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Adventure {
 
-    public static void main(String[] args) {
+    public void startAdventure(){
 
         boolean isRunning = true;
 
@@ -11,7 +11,6 @@ public class Adventure {
         Adventure game = new Adventure();
         Map map = new Map();
         map.createMap();
-
         Player player = new Player();
         player.setCurrent(map.getEntrance());
 
@@ -20,6 +19,8 @@ public class Adventure {
             String[] inputParts = input.split(" ", 2);
             String command = inputParts[0];
             String itemName = (inputParts.length > 1) ? inputParts[1] : "";
+            String foodName = (inputParts.length > 1) ? inputParts[1] : "";
+
 
 
             //need to fix so you can type 'go south' or 's'
@@ -32,13 +33,14 @@ public class Adventure {
                     System.exit(0);
                     break;
                 case "help":
-                    player.helpMenu();
+                    ui.helpMenu();
                     break;
                 case "look":
                     ui.printRoomItems(player.getCurrent());
                     break;
                 case "take":
                     player.takeItem(itemName);
+                    player.takeFood(foodName);
                     break;
                 case "drop":
                     player.dropItem(itemName);
@@ -47,8 +49,8 @@ public class Adventure {
                     player.showInventory();
                     break;
                 case "eat":
-                    player.eat(itemName);
-                    String eatStatus = player.eat(itemName);
+                    player.eat(foodName);
+                    String eatStatus = player.eat(foodName); //changed from itemName to foodName??
                     System.out.println(eatStatus);
                     break;
                 case "health":
