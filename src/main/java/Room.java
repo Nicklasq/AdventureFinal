@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class Room {
 
-    //need iteam arraylist
     private String name;
     private String description;
     private Room east;

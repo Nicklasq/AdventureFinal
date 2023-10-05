@@ -41,7 +41,6 @@ public class UserInterface {
     public void printDropItem(String itemName) {
         System.out.println("You dropped the " + itemName + ".");
     }
-
     public void printNoItemInRoom(String itemName) {
         System.out.println("There is no " + itemName + " in this room.");
     }

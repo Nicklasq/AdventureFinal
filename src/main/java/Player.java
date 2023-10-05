@@ -5,6 +5,7 @@ public class Player {
     private Room current;
     private ArrayList<Item> inventory = new ArrayList<>();
     private int health;
+    private Weapon EquippedWeapon;
 
     //players health
     public Player() {
@@ -31,16 +32,6 @@ public class Player {
     public void setCurrent(Room current) {
         this.current = current;
     }
-
-
-//    public class Inventory {
-//        private ArrayList<Item> items = new ArrayList<Item>();
-//
-//       public Inventory() {
-//            this.items.add(new Item("Knife"));
-//            this.items.add(new Item("Note"));
-//        }
-//    }
 
     public void move(String direction) {
         // Check if the direction is valid for the current room
@@ -131,37 +122,52 @@ public class Player {
 
 
     public String eat(String foodName) {
+
+        for (Item item: inventory
+             ) {
+
+            System.out.println(item.getName());
+        }
         Room currentRoom = getCurrent();
-        ArrayList<Food> roomFoodItems = currentRoom.getFoodItems();
 
         // Check if foodName is empty or null
         if (foodName == null   || foodName.isEmpty()) {
             return "Please specify the name of the food you want to eat.";
         }
 
-        for (Food food : roomFoodItems) {
-            // Check if the foodName matches, ignoring case
-            if (food.getName().equalsIgnoreCase(foodName)) {
-                int healthChange = food.getHealthPoints();
-                currentRoom.getFoodItems().remove(food);
 
-                if (healthChange > 0) {
-                    // Positive health change
-                    inventory.remove(food);
-                    setHealth(getHealth() + healthChange); // Increase player's health
-                    return "You ate the " + foodName + " and gained " + healthChange + " health points.";
-                } else if (healthChange < 0) {
-                    // Negative health change
-                    inventory.remove(food);
-                    setHealth(getHealth() - healthChange); // Decrease player's health
-                    return "You ate the " + foodName + " and lost " + (-healthChange) + " health points.";
+        for (Item food : inventory) {
+
+
+            if (food instanceof Food) {
+
+
+                if (food.getName().equals(foodName)){
+
+                    Food f = (Food)food;
+                    int healthChange = f.getHealthPoints();
+                    if (healthChange > 0) {
+                        // Positive health change
+                        inventory.remove(food);
+                        setHealth(getHealth() + healthChange); // Increase player's health
+                        return "You ate the " + foodName + " and gained " + healthChange + " health points.";
+                    } else if (healthChange < 0) {
+                        // Negative health change
+                        inventory.remove(food);
+                        setHealth(getHealth() - healthChange); // Decrease player's health
+                        return "You ate the " + foodName + " and lost " + (-healthChange) + " health points.";
+                    }
+
+
                 }
+
             }
+            // Check if the foodName matches, ignoring case
+
         }
 
         return "There is no " + foodName + " to eat.";
     }
-
 
     public boolean readNote() {
         Room currentRoom = getCurrent();
@@ -225,5 +231,33 @@ public class Player {
         System.out.println("There is no note in this room to read.");
         return false;
     }
+
+    public void equip(String w) {
+
+        for (Item item : inventory) {
+
+            if (item.getName().equals(w)) {
+                EquippedWeapon = (Weapon)item;
+                inventory.remove(item);
+            }
+        }
+    }
+    public void unequip(){
+        inventory.add(EquippedWeapon);
+        EquippedWeapon = null;
+    }
+    public Weapon getEquippedWeapon() {
+        return EquippedWeapon;
+    }
+
+    public void setEquippedWeapon(Weapon equippedWeapon) {
+        EquippedWeapon = equippedWeapon;
+    }
+
+    //    public void attack(){
+//        return EquippedWeapon.getDamage();
+//        current.
+//
+//    }
 }
 

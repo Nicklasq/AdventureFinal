@@ -20,6 +20,7 @@ public class Adventure {
             String command = inputParts[0];
             String itemName = (inputParts.length > 1) ? inputParts[1] : "";
             String foodName = (inputParts.length > 1) ? inputParts[1] : "";
+            String weaponName = (inputParts.length > 1) ? inputParts[1] : "";
 
 
 
@@ -55,6 +56,13 @@ public class Adventure {
                     break;
                 case "health":
                     System.out.println("Your current health: " + player.getHealth());
+                    break;
+                case "equip":
+                    player.equip(weaponName);
+                    System.out.println("Your equipped weapon: " + player.getEquippedWeapon().getName());
+                    break;
+                case "unequip":
+                    player.unequip();
                     break;
                 case "read":
                     if (itemName.equals("note1")) {

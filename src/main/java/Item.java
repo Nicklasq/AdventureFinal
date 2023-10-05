@@ -1,7 +1,7 @@
 public class Item {
     private String name;
 
-
+    //weapon attribute ''damage''
     public Item(String name){
         this.name = name;
     }

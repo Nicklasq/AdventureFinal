@@ -1,3 +1,5 @@
+import org.w3c.dom.ranges.Range;
+
 public class Map {
 
    private Room entrance, kitchen, diningRoom, garage, bedRoom, office, bathRoom, hallWay, livingRoom;
