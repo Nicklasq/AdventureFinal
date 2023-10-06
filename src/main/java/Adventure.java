@@ -23,7 +23,6 @@ public class Adventure {
             String weaponName = (inputParts.length > 1) ? inputParts[1] : "";
 
 
-
             //need to fix so you can type 'go south' or 's'
             switch (command) {
                 case "north", "go-north", "n", "south", "go-south", "s", "east", "go-east", "e", "west", "go-west", "w":
@@ -50,8 +49,7 @@ public class Adventure {
                     player.showInventory();
                     break;
                 case "eat":
-                    player.eat(foodName);
-                    String eatStatus = player.eat(foodName); //changed from itemName to foodName??
+                    String eatStatus = player.eat(foodName);
                     System.out.println(eatStatus);
                     break;
                 case "health":
@@ -59,7 +57,9 @@ public class Adventure {
                     break;
                 case "equip":
                     player.equip(weaponName);
-                    System.out.println("Your equipped weapon: " + player.getEquippedWeapon().getName());
+                    break;
+                case "attack":
+                    player.attack();
                     break;
                 case "unequip":
                     player.unequip();

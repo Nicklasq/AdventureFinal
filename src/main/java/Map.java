@@ -1,11 +1,9 @@
-import org.w3c.dom.ranges.Range;
-
 public class Map {
 
    private Room entrance, kitchen, diningRoom, garage, bedRoom, office, bathRoom, hallWay, livingRoom;
 
-// we need items'
-     public void createMap(){
+    // we need items'
+    public void createMap(){
         // Define rooms and their descriptions
         entrance = new Room("Entrance", """
         --------------------------------------------|
@@ -115,26 +113,38 @@ public class Map {
         livingRoom.setNorth(office);
         livingRoom.setWest(hallWay);
 
+        // Create and add melee weapons to rooms
+        MeleeWeapon knife = new MeleeWeapon("knife", 10);
+        kitchen.addItem(knife);
+
+        MeleeWeapon hammer = new MeleeWeapon("hammer", 15);
+        garage.addItem(hammer);
+
+        RangedWeapon pistol = new RangedWeapon("gun", 10);
+        garage.addItem(pistol);
 
         // Create Food objects and add them to rooms
-        Food apple = new Food("Apple", "A fresh red apple.", 10);
+        Food apple = new Food("apple" , 10);
         kitchen.addFood(apple);
 
-        Food pizza = new Food("pizza", "A delicious slice of pizza.", 20);
-        diningRoom.addItem(pizza);
+        Food pizza = new Food("pizza", 20);
+        diningRoom.addFood(pizza);
+
+        Food soup = new Food("rotten egg", -40);
+        garage.addFood(soup);
 
 // Create and add items to rooms
         Item noteEntrance = new Item("note1");
         entrance.addItem(noteEntrance);
 
-        Item knife = new Item("knife");
-        kitchen.addItem(knife);
+        //Item knife = new Item("knife");
+        //kitchen.addItem(knife);
 
         Item foodBread = new Item("bread");
         kitchen.addItem(foodBread);
 
-        Item hammer = new Item("hammer");
-        garage.addItem(hammer);
+        //Item hammer = new Item("hammer");
+        //garage.addItem(hammer);
 
         Item noteGarage = new Item("note2");
         garage.addItem(noteGarage);
@@ -151,12 +161,12 @@ public class Map {
         Item noteLivingroom = new Item("note3");
         livingRoom.addItem(noteLivingroom);
 
-        Item foodApple = new Item("apple");
-        hallWay.addItem(foodApple);
+        Food appleee = new Food("apple", 10);
+        hallWay.addFood(appleee);
 
         Item jarKey = new Item("key stuck in a jar");
         bedRoom.addItem(jarKey);
-     }
+    }
 
 
 

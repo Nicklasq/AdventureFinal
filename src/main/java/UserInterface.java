@@ -19,7 +19,7 @@ public class UserInterface {
 
 
     public void printRoomItems(Room room){
-        System.out.println("Debug: Current room name: " + room.getName());
+        System.out.println("Current room name: " + room.getName());
         String line = "You look around and see these items in the " + room.getName();
 
         System.out.println(line);
@@ -63,7 +63,7 @@ public class UserInterface {
         """);
     }
     public void helpMenu(){
-            System.out.println("""
+        System.out.println("""
                     -------------------------------------------------|
                         Movement Commands:                           |   
                         Type "go-north" to move north.               |      
@@ -79,13 +79,17 @@ public class UserInterface {
                         Type "health" to look at your current healt  |
                         type "read (notes name)" to read a note      |
                         type "search" to search a dead body          |       
-                                                                     |            
+                        type "attack" to attack with weapon equipped | 
+                        type "eat" to eat food and gain health       | 
+                        type "equip or unequip" to equip and unequip | 
+                         weapons                                     |            
+                                                                     | 
                         Menu and Help Commands:                      |        
                         Type "help" to display this help menu.       |          
                         Type "quit" to exit the game.                |        
                     -------------------------------------------------|
                         """);
-        }
+    }
 
 
 }
