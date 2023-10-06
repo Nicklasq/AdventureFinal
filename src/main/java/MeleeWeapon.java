@@ -3,4 +3,8 @@ public class MeleeWeapon extends Weapon {
         super(name);
         this.setDamage(damage);
     }
+    @Override
+    public void use(){
+
+    }
 }

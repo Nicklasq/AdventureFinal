@@ -1,4 +1,5 @@
 //import java.util.Scanner;
+
 import org.w3c.dom.ranges.Range;
 
 import java.util.ArrayList;
@@ -7,7 +8,8 @@ public class Player {
     private Room current;
     private ArrayList<Item> inventory = new ArrayList<>();
     private int health;
-    private MeleeWeapon equippedWeapon;
+    private Weapon equippedWeapon;
+
 
     //players health
     public Player() {
@@ -122,10 +124,9 @@ public class Player {
     }
 
 
-
     public String eat(String foodName) {
 
-        for (Item item: inventory
+        for (Item item : inventory
         ) {
 
             System.out.println(item.getName());
@@ -133,7 +134,7 @@ public class Player {
         Room currentRoom = getCurrent();
 
         // Check if foodName is empty or null
-        if (foodName == null   || foodName.isEmpty()) {
+        if (foodName == null || foodName.isEmpty()) {
             return "Please specify the name of the food you want to eat.";
         }
 
@@ -144,9 +145,9 @@ public class Player {
             if (food instanceof Food) {
 
 
-                if (food.getName().equals(foodName)){
+                if (food.getName().equals(foodName)) {
 
-                    Food f = (Food)food;
+                    Food f = (Food) food;
                     int healthChange = f.getHealthPoints();
                     if (healthChange > 0) {
                         // Positive health change
@@ -237,7 +238,7 @@ public class Player {
     public void equip(String weaponName) {
         for (Item item : inventory) {
             if (item instanceof Weapon && item.getName().equalsIgnoreCase(weaponName)) {
-                equippedWeapon = (MeleeWeapon) item;
+                equippedWeapon = (Weapon) item;
                 System.out.println("You equipped the " + weaponName + ".");
                 inventory.remove(item);
                 return;
@@ -246,9 +247,10 @@ public class Player {
         System.out.println("You do not have a " + weaponName + " in your inventory.");
     }
 
+
     public void attack() {
         if (equippedWeapon != null) {
-            System.out.println("You swing your " + equippedWeapon.getName() + " and deal " + equippedWeapon.getDamage() + " damage.");
+            System.out.println("You attacked " + equippedWeapon.getName() + " and dealt " + equippedWeapon.getDamage() + " damage.");
         } else {
             System.out.println("You are not equipped with any weapon.");
         }
@@ -262,13 +264,6 @@ public class Player {
         } else {
             System.out.println("You dont have any weapons equipped.");
         }
-    }
-    public Weapon getEquippedWeapon() {
-        return equippedWeapon;
-    }
-
-    public void setEquippedWeapon(Weapon equippedWeapon) {
-        equippedWeapon = equippedWeapon;
     }
 
 }

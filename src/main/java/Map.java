@@ -120,7 +120,7 @@ public class Map {
         MeleeWeapon hammer = new MeleeWeapon("hammer", 15);
         garage.addItem(hammer);
 
-        RangedWeapon pistol = new RangedWeapon("gun", 10);
+        RangedWeapon pistol = new RangedWeapon("gun", 10, 1);
         garage.addItem(pistol);
 
         // Create Food objects and add them to rooms
