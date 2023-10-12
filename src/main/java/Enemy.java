@@ -13,10 +13,6 @@ public class Enemy {
         return name;
     }
 
-    public int getHealth() {
-        return health;
-    }
-
     public Weapon getWeapon() {
         return weapon;
     }
@@ -26,14 +22,19 @@ public class Enemy {
     }
 
     public int attack() {
-        int damageDealt = 20; // Set the damage dealt by the enemy to 30
+        int damageDealt = 20; // Set the damage dealt by the enemy to 20
         return damageDealt;
     }
 
-        public void takeDamage(int damage) {
-        // Define the logic for the enemy taking damage here.
-        // Reduce the enemy's health by the specified amount of damage.
-        // Replace this with your actual damage-taking logic.
+    public void takeDamage(int damage) {
         health -= damage;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 }

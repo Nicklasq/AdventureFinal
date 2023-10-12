@@ -9,10 +9,10 @@ public class Room {
     private Room south;
     private Room west;
 
+
     private ArrayList<Item> items;
     private ArrayList<Food> foodItems;
     private ArrayList<Enemy> enemies;
-
 
 
     public Room(String name, String description) {
@@ -25,6 +25,7 @@ public class Room {
         this.items = new ArrayList<>();
         foodItems = new ArrayList<>();
         this.enemies = new ArrayList<>();
+
     }
 
     public ArrayList<Enemy> getEnemies() {
@@ -91,10 +92,6 @@ public class Room {
         items.add(i);
     }
 
-    public void addItem(Food food) {
-        foodItems.add(food);
-    }
-
     public ArrayList<Item> getItems() {
         return items;
     }
@@ -103,17 +100,7 @@ public class Room {
         foodItems.add(food);
     }
 
-    public void removeFood(Food food) {
-        foodItems.remove(food);
-    }
-
     public void takeItem(String name) {
     }
 
-    public void setDoorLocked(boolean b) {
-    }
-
-    public boolean isDoorLocked() {
-        return true;
-    }
 }

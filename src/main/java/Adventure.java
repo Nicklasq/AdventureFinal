@@ -5,10 +5,10 @@ public class Adventure {
     public void startAdventure() {
 
         boolean isRunning = true;
+        boolean won = false;
 
         UserInterface ui = new UserInterface();
         ui.welcome();
-        Adventure game = new Adventure();
         Map map = new Map();
         map.createMap();
         Player player = new Player();
@@ -29,23 +29,10 @@ public class Adventure {
 
                 switch (command) {
                     case "attack":
-                        player.attack(enemy);
-                        //enemy attack
-                        //int damageTaken = enemy.attack();
-                        //player.setHealth(player.getHealth() - damageTaken);
+                        player.attack();
 
                         if (!enemy.isAlive()) {
-                            //System.out.println("You defeated " + enemy.getName() + ".");   we can delete this
                             player.getCurrent().removeEnemy(enemy);
-
-                            //After defeating the enemy
-                            if (player.getCurrent().getNorth() != null) {
-                                //player.move("north");          we can delete this
-                                //ui.printCurrentRoom(player.getCurrent());      we can delete this
-                                //System.out.println("You have defeted " + enemy.getName());         we can delete this
-                            } else {
-                                System.out.println("There's no room to move forward.");
-                            }
                         }
                         break;
                     case "health":
@@ -68,14 +55,12 @@ public class Adventure {
                         System.out.println("An enemy is blocking your path. You can only use 'attack', 'health', 'equip', or 'back'.");
                 }
 
-                // Check if the enemy is defeated
+                //check if the enemy is defeated
                 if (!enemy.isAlive()) {
-                    System.out.println("You defeated " + enemy.getName() + ".");
-                    // You can add code here to handle looting the enemy, if needed
                     player.getCurrent().removeEnemy(enemy);
                 } else if (player.getHealth() <= 0) {
-                    System.out.println("You have been defeated. Game over!");
                     isRunning = false;
+                    won = false;
                 }
             } else {
 
@@ -88,12 +73,6 @@ public class Adventure {
                             player.move(command);
                             ui.printCurrentRoom(player.getCurrent());
                         }
-                        //if (player.isDoorLocked()){
-                        //    System.out.println("Door is locked");
-                        //}else {
-                        //    player.move(command);
-                        //    ui.printCurrentRoom(player.getCurrent());
-                        //}
                         break;
                     case "back":
                         player.moveBack();
@@ -109,7 +88,6 @@ public class Adventure {
                         ui.printRoomItems(player.getCurrent());
                         break;
                     case "take":
-                        //player.takeItem(itemName, player.getCurrent());
                         player.takeFood(foodName);
                         player.takeItem(itemName, player.getCurrent());
                         break;
@@ -136,18 +114,30 @@ public class Adventure {
                         player.unequip();
                         break;
                     case "read":
-                        if (itemName.equals("note1")) {
+                        if (itemName.equals("letter")) {
                             player.readNote();
-                        } else if (itemName.equals("note2")) {
+                        } else if (itemName.equals("note")) {
                             player.readNote2();
                         } else {
                             System.out.println("You can't read that.");
+                        }
+                        break;
+                    case "use":
+                        if (player.use()){
+                            isRunning = false;
+                            won = true;
                         }
                         break;
                     default:
                         System.out.println("Invalid command. Try again. (type 'help' for help menu)");
                 }
             }
+        }
+        if (won){
+            System.out.println("ＹＯＵ ＥＳＣＡＰＥＤ ＡＮＤ ＷＯＮ ＴＨＥ ＧＡＭＥ, ＴＨＡＮＫＳ ＦＯＲ ＰＬＡＹＩＮＧ");
+        }
+        else{
+            System.out.println("ＹＯＵ ＬＯＳＴ ＴＨＥ ＧＡＭＥ, ＴＲＹ ＡＧＡＩＮ.");
         }
     }
 }

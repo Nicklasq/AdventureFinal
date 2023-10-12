@@ -3,8 +3,14 @@ public class MeleeWeapon extends Weapon {
         super(name);
         this.setDamage(damage);
     }
-    @Override
-    public void use(){
 
+
+    @Override
+    public int remainingAmmo() {
+        return 0;
+    }
+
+    public boolean canUse(){
+        return true;
     }
 }

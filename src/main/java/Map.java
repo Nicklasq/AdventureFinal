@@ -4,94 +4,94 @@ public class Map {
 
 
    // we need items'
-   public void createMap(){
+   public void createMap() {
       // Define rooms and their descriptions
       entrance = new Room("Entrance", """
-        --------------------------------------------|
-        As you step inside the entrance,                        |      
-        a spine-tingling chill surrounds you.                   |     
-        The entrance hall is dimly lit with cobwebs everywhere, |    
-        creaky floors, and a lingering sense of fear.           |  
-        Your adventure into darkness has begun                  |  
-        --------------------------------------------------------|
-        """);
+                --------------------------------------------|
+                As you step inside the entrance,                        |      
+                a spine-tingling chill surrounds you.                   |     
+                The entrance hall is dimly lit with cobwebs everywhere, |    
+                creaky floors, and a lingering sense of fear.           |  
+                Your adventure into darkness has begun                  |  
+                --------------------------------------------------------|
+                """);
       kitchen = new Room("Kitchen", """
-       --------------------------------------------|            
-       Entering the kitchen, you feel another chilling gust of  |   
-       air. It's a gloomy sight, with cracked, stained tiles on |    
-       the floor, a flickering, broken chandelier, and shadows  |       
-       dancing on rusty pots and pans. The air carries a        |        
-       sickly-sweet odor, remnants of forgotten meals.          |       
-       The sink drips rhythmically, like a ghostly heartbeat.   |        
-       The room holds an unsettling atmosphere,                 |      
-       and your adventure into the unknown continues.           |         
-       ---------------------------------------------------------|
-        """);
+                --------------------------------------------|            
+                Entering the kitchen, you feel another chilling gust of  |   
+                air. It's a gloomy sight, with cracked, stained tiles on |    
+                the floor, a flickering, broken chandelier, and shadows  |       
+                dancing on rusty pots and pans. The air carries a        |        
+                sickly-sweet odor, remnants of forgotten meals.          |       
+                The sink drips rhythmically, like a ghostly heartbeat.   |        
+                The room holds an unsettling atmosphere,                 |      
+                and your adventure into the unknown continues.           |         
+                ---------------------------------------------------------|
+                 """);
       diningRoom = new Room("Dining Room", """
-       --------------------------------------------|               
-       Stepping into the dining room, the atmosphere remains    |      
-       eerie. Dim light reveals a table covered in dust,        |       
-       frozen in time. Cobwebs hang like spectral drapes,       |      
-       and the air is heavy with the echoes of past meals.      |         
-       ---------------------------------------------------------|
-        """);
+                --------------------------------------------|               
+                Stepping into the dining room, the atmosphere remains    |      
+                eerie. Dim light reveals a table covered in dust,        |       
+                frozen in time. Cobwebs hang like spectral drapes,       |      
+                and the air is heavy with the echoes of past meals.      |         
+                ---------------------------------------------------------|
+                 """);
       garage = new Room("Garage", """
-       --------------------------------------------|
-       In the garage, shadows play on rusted tools and          |  
-       forgotten machinery. The air is thick with the           |    
-       cent of oil and decay, and the silence is broken         |     
-       only by the occasional drip from a leaky ceiling.        |         
-       ---------------------------------------------------------|
-        """);
+                --------------------------------------------|
+                In the garage, shadows play on rusted tools and          |  
+                forgotten machinery. The air is thick with the           |    
+                cent of oil and decay, and the silence is broken         |     
+                only by the occasional drip from a leaky ceiling.        |         
+                ---------------------------------------------------------|
+                 """);
       bedRoom = new Room("Bedroom", """
-       --------------------------------------------|
-       In the bedroom, a heavy sense of sorrow hangs in the air.| 
-       The bed is unmade, and the room is in disarray.          | 
-       The window curtains sway as if in mourning,              |     
-       and the room is filled with a haunting stillness.        |         
-       ---------------------------------------------------------|
-        """);
+                --------------------------------------------|
+                In the bedroom, a heavy sense of sorrow hangs in the air.| 
+                The bed is unmade, and the room is in disarray.          | 
+                The window curtains sway as if in mourning,              |     
+                and the room is filled with a haunting stillness.        |         
+                ---------------------------------------------------------|
+                 """);
       office = new Room("Office", """
-       --------------------------------------------|
-       The office is a haunting scene, with dusty,              |
-       neglected papers strewn about. A broken desk chair       |  
-       sits motionless, and the dim light barely illuminates    |   
-       the unsettling stillness that lingers in the room.       |         
-       ---------------------------------------------------------|
-        """);
+                --------------------------------------------|
+                The office is a haunting scene, with dusty,              |
+                neglected papers strewn about. A broken desk chair       |  
+                sits motionless, and the dim light barely illuminates    |   
+                the unsettling stillness that lingers in the room.       |         
+                ---------------------------------------------------------|
+                 """);
       bathRoom = new Room("Bathroom", """
-       --------------------------------------------|
-       The bathroom offers no respite from the foreboding.      |   
-       Cracked tiles and a shattered mirror reflect a           |    
-       grim picture. The faucet drips incessantly,              |   
-       and the room feels cold and unwelcoming.                 |          
-       ---------------------------------------------------------|
-        """);
+                --------------------------------------------|
+                The bathroom offers no respite from the foreboding.      |   
+                Cracked tiles and a shattered mirror reflect a           |    
+                grim picture. The faucet drips incessantly,              |   
+                and the room feels cold and unwelcoming.                 |          
+                ---------------------------------------------------------|
+                 """);
       hallWay = new Room("Hallway", """
-       --------------------------------------------|
-       As you move through the hallway, the walls seem to       |
-       close in on you. The faded wallpaper is peeling,         |     
-       and the floorboards creak beneath your feet.             |   
-       Shadows seem to shift and whisper in the corners.        |          
-       ---------------------------------------------------------|
-        """);
+                --------------------------------------------|
+                As you move through the hallway, the walls seem to       |
+                close in on you. The faded wallpaper is peeling,         |     
+                and the floorboards creak beneath your feet.             |   
+                Shadows seem to shift and whisper in the corners.        |          
+                ---------------------------------------------------------|
+                 """);
       livingRoom = new Room("Living Room", """
-       --------------------------------------------|
-       YOU HAVE ENCOUNTERED AN ENEMY ORC!!                      |
-                                                                |
-       You can attack or move back to the previous room.        |
-       He will not let you pass unless he is defeated.          |     
-       ---------------------------------------------------------|
-        """);
+                --------------------------------------------|
+                YOU HAVE ENCOUNTERED AN ENEMY ORC!!                      |
+                                                                         |
+                You can attack or move back to the previous room.        |
+                He will not let you pass unless he is defeated.          |     
+                ---------------------------------------------------------|
+                 """);
       freedomRoom = new Room("freedom", """
-       |------------------------|
-       | YOU HAVE ESCAPED       |
-       | FREEDOM AWAITS YOU.    |   
-       |------------------------|
-        """);
+                |------------------------|
+                | YOU HAVE ESCAPED       |
+                | FREEDOM AWAITS YOU.    |   
+                |------------------------|
+                 """);
 
 
-      // Connect rooms with directions
+      //connect rooms with directions
       entrance.setNorth(freedomRoom);
       entrance.setEast(kitchen);
       entrance.setSouth(garage);
@@ -134,18 +134,18 @@ public class Map {
       MeleeWeapon sword = new MeleeWeapon("sword", 20);
       livingRoom.addItem(sword);
 
-      RangedWeapon pistol = new RangedWeapon("gun", 10, 1);
-      garage.addItem(pistol);
+      RangedWeapon crossbow = new RangedWeapon("crossbow", 60, 1);
+      garage.addItem(crossbow);
 
       // Create enemies and add them to rooms
       Enemy enemy1 = new Enemy("Orc", 50, new MeleeWeapon("sword", 20));
       livingRoom.addEnemy(enemy1);
 
-      Enemy enemy2 = new Enemy("Masked man", 60, new MeleeWeapon("axe", 25));
+      Enemy enemy2 = new Enemy("Masked man", 50, new MeleeWeapon("axe", 25));
       bathRoom.addEnemy(enemy2);
 
-      // Create Food objects and add them to rooms
-      Food apple = new Food("apple" , 30);
+      //create Food objects and add them to rooms
+      Food apple = new Food("apple", 30);
       kitchen.addFood(apple);
 
       Food pizza = new Food("pizza", 20);
@@ -157,99 +157,28 @@ public class Map {
       Food orcsMeat = new Food("orcs meat", -30);
       livingRoom.addFood(orcsMeat);
 
-// Create and add items to rooms
-      Item noteEntrance = new Item("note1");
+      //create and add items to rooms
+      Item noteEntrance = new Item("letter");
       entrance.addItem(noteEntrance);
 
-      Item foodBread = new Item("bread");
-      kitchen.addItem(foodBread);
-
-      Item noteGarage = new Item("note2");
+      Item noteGarage = new Item("note");
       garage.addItem(noteGarage);
 
-      Item deadBodyDiningroom = new Item("dead body");
+      Item deadBodyDiningroom = new Item("dead body     ");
       diningRoom.addItem(deadBodyDiningroom);
 
-      Item deadBodyBathroom = new Item("dead body");
+      Item deadBodyBathroom = new Item("dead body     ");
       bathRoom.addItem(deadBodyBathroom);
 
       Food appleee = new Food("apple", 10);
       hallWay.addFood(appleee);
 
+      Item key = new Item ("key");
+      bedRoom.addItem(key);
+
    }
-
-
-
 
    public Room getEntrance() {
       return entrance;
-   }
-
-   public void setEntrance(Room entrance) {
-      this.entrance = entrance;
-   }
-
-   public Room getKitchen() {
-      return kitchen;
-   }
-
-   public void setKitchen(Room kitchen) {
-      this.kitchen = kitchen;
-   }
-
-   public Room getDiningRoom() {
-      return diningRoom;
-   }
-
-   public void setDiningRoom(Room diningRoom) {
-      this.diningRoom = diningRoom;
-   }
-
-   public Room getGarage() {
-      return garage;
-   }
-
-   public void setGarage(Room garage) {
-      this.garage = garage;
-   }
-
-   public Room getBedRoom() {
-      return bedRoom;
-   }
-
-   public void setBedRoom(Room bedRoom) {
-      this.bedRoom = bedRoom;
-   }
-
-   public Room getOffice() {
-      return office;
-   }
-
-   public void setOffice(Room office) {
-      this.office = office;
-   }
-
-   public Room getBathRoom() {
-      return bathRoom;
-   }
-
-   public void setBathRoom(Room bathRoom) {
-      this.bathRoom = bathRoom;
-   }
-
-   public Room getHallWay() {
-      return hallWay;
-   }
-
-   public void setHallWay(Room hallWay) {
-      this.hallWay = hallWay;
-   }
-
-   public Room getLivingRoom() {
-      return livingRoom;
-   }
-
-   public void setLivingRoom(Room livingRoom) {
-      this.livingRoom = livingRoom;
    }
 }

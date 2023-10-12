@@ -8,17 +8,19 @@ public class RangedWeapon extends Weapon {
         this.ammo = ammo;
     }
 
-
     @Override
-    public boolean canUse() {
-        return ammo > 0;
-
-
+    public int remainingAmmo(){
+        return ammo --;
     }
     @Override
-    public void use() {
-        if (canUse()) {
-            ammo--;
+    public boolean canUse() {
+        if (remainingAmmo() == 0){
+            return false;
+        } else {
+            return true;
         }
     }
 }
+
+
+
