@@ -1,11 +1,9 @@
 public class Item {
     private String name;
+    private static boolean isKey;
 
-    public Item(String name){
+    public Item(String name) {
         this.name = name;
-    }
-
-    public Item(String name, String description) {
     }
 
     public String getName() {
@@ -17,5 +15,8 @@ public class Item {
     }
 
 
-
+    @Override
+    public String toString() {
+        return name;
+    }
 }

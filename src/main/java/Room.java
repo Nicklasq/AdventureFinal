@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class Room {
 
-    //need iteam arraylist
     private String name;
     private String description;
     private Room east;
@@ -12,7 +11,7 @@ public class Room {
 
     private ArrayList<Item> items;
     private ArrayList<Food> foodItems;
-
+    private ArrayList<Enemy> enemies;
 
 
 
@@ -25,6 +24,19 @@ public class Room {
         this.west = null;
         this.items = new ArrayList<>();
         foodItems = new ArrayList<>();
+        this.enemies = new ArrayList<>();
+    }
+
+    public ArrayList<Enemy> getEnemies() {
+        return enemies;
+    }
+
+    public void addEnemy(Enemy enemy) {
+        enemies.add(enemy);
+    }
+
+    public void removeEnemy(Enemy enemy) {
+        enemies.remove(enemy);
     }
 
 
@@ -58,11 +70,7 @@ public class Room {
         return west;
     }
 
-    //Setter
-    //public void setName{
-
-    //}
-
+    //setter
     public void setEast(Room east) {
         this.east = east;
     }
@@ -78,8 +86,9 @@ public class Room {
     public void setWest(Room west) {
         this.west = west;
     }
-    public void addItem(Item i){
-            items.add(i);
+
+    public void addItem(Item i) {
+        items.add(i);
     }
 
     public void addItem(Food food) {
@@ -96,5 +105,15 @@ public class Room {
 
     public void removeFood(Food food) {
         foodItems.remove(food);
+    }
+
+    public void takeItem(String name) {
+    }
+
+    public void setDoorLocked(boolean b) {
+    }
+
+    public boolean isDoorLocked() {
+        return true;
     }
 }

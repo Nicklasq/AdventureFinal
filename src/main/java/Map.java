@@ -1,11 +1,12 @@
 public class Map {
 
-   private Room entrance, kitchen, diningRoom, garage, bedRoom, office, bathRoom, hallWay, livingRoom;
+   private Room entrance, kitchen, diningRoom, garage, bedRoom, office, bathRoom, hallWay, livingRoom, freedomRoom;
 
-// we need items'
-     public void createMap(){
-        // Define rooms and their descriptions
-        entrance = new Room("Entrance", """
+
+   // we need items'
+   public void createMap(){
+      // Define rooms and their descriptions
+      entrance = new Room("Entrance", """
         --------------------------------------------|
         As you step inside the entrance,                        |      
         a spine-tingling chill surrounds you.                   |     
@@ -14,7 +15,7 @@ public class Map {
         Your adventure into darkness has begun                  |  
         --------------------------------------------------------|
         """);
-        kitchen = new Room("Kitchen", """
+      kitchen = new Room("Kitchen", """
        --------------------------------------------|            
        Entering the kitchen, you feel another chilling gust of  |   
        air. It's a gloomy sight, with cracked, stained tiles on |    
@@ -26,7 +27,7 @@ public class Map {
        and your adventure into the unknown continues.           |         
        ---------------------------------------------------------|
         """);
-        diningRoom = new Room("Dining Room", """
+      diningRoom = new Room("Dining Room", """
        --------------------------------------------|               
        Stepping into the dining room, the atmosphere remains    |      
        eerie. Dim light reveals a table covered in dust,        |       
@@ -34,7 +35,7 @@ public class Map {
        and the air is heavy with the echoes of past meals.      |         
        ---------------------------------------------------------|
         """);
-        garage = new Room("Garage", """
+      garage = new Room("Garage", """
        --------------------------------------------|
        In the garage, shadows play on rusted tools and          |  
        forgotten machinery. The air is thick with the           |    
@@ -42,7 +43,7 @@ public class Map {
        only by the occasional drip from a leaky ceiling.        |         
        ---------------------------------------------------------|
         """);
-        bedRoom = new Room("Bedroom", """
+      bedRoom = new Room("Bedroom", """
        --------------------------------------------|
        In the bedroom, a heavy sense of sorrow hangs in the air.| 
        The bed is unmade, and the room is in disarray.          | 
@@ -50,7 +51,7 @@ public class Map {
        and the room is filled with a haunting stillness.        |         
        ---------------------------------------------------------|
         """);
-        office = new Room("Office", """
+      office = new Room("Office", """
        --------------------------------------------|
        The office is a haunting scene, with dusty,              |
        neglected papers strewn about. A broken desk chair       |  
@@ -58,7 +59,7 @@ public class Map {
        the unsettling stillness that lingers in the room.       |         
        ---------------------------------------------------------|
         """);
-        bathRoom = new Room("Bathroom", """
+      bathRoom = new Room("Bathroom", """
        --------------------------------------------|
        The bathroom offers no respite from the foreboding.      |   
        Cracked tiles and a shattered mirror reflect a           |    
@@ -66,7 +67,7 @@ public class Map {
        and the room feels cold and unwelcoming.                 |          
        ---------------------------------------------------------|
         """);
-        hallWay = new Room("Hallway", """
+      hallWay = new Room("Hallway", """
        --------------------------------------------|
        As you move through the hallway, the walls seem to       |
        close in on you. The faded wallpaper is peeling,         |     
@@ -74,87 +75,108 @@ public class Map {
        Shadows seem to shift and whisper in the corners.        |          
        ---------------------------------------------------------|
         """);
-        livingRoom = new Room("Living Room", """
+      livingRoom = new Room("Living Room", """
        --------------------------------------------|
-       Entering the living room, you're greeted by tattered     |
-       furniture and an air of desolation. The remains of a     |    
-       once-warm fireplace now stand cold and lifeless.         |     
-       The room seems to hold memories of forgotten laughter.   |          
+       YOU HAVE ENCOUNTERED AN ENEMY ORC!!                      |
+                                                                |
+       You can attack or move back to the previous room.        |
+       He will not let you pass unless he is defeated.          |     
        ---------------------------------------------------------|
         """);
-
-        // Connect rooms with directions
-
-
-        entrance.setEast(kitchen);
-        entrance.setSouth(garage);
-
-        kitchen.setWest(entrance);
-        kitchen.setEast(diningRoom);
-
-        diningRoom.setWest(kitchen);
-        diningRoom.setSouth(office);
-
-        garage.setNorth(entrance);
-        garage.setSouth(bathRoom);
-
-        bedRoom.setSouth(hallWay);
-
-        office.setNorth(diningRoom);
-        office.setSouth(livingRoom);
-
-        bathRoom.setNorth(garage);
-        bathRoom.setEast(hallWay);
-
-        hallWay.setNorth(bedRoom);
-        hallWay.setWest(bathRoom);
-        hallWay.setEast(livingRoom);
-
-        livingRoom.setNorth(office);
-        livingRoom.setWest(hallWay);
+      freedomRoom = new Room("freedom", """
+       |------------------------|
+       | YOU HAVE ESCAPED       |
+       | FREEDOM AWAITS YOU.    |   
+       |------------------------|
+        """);
 
 
-        // Create Food objects and add them to rooms
-        Food apple = new Food("Apple", "A fresh red apple.", 10);
-        kitchen.addFood(apple);
+      // Connect rooms with directions
+      entrance.setNorth(freedomRoom);
+      entrance.setEast(kitchen);
+      entrance.setSouth(garage);
 
-        Food pizza = new Food("pizza", "A delicious slice of pizza.", 20);
-        diningRoom.addItem(pizza);
+      kitchen.setWest(entrance);
+      kitchen.setEast(diningRoom);
+
+      diningRoom.setWest(kitchen);
+      diningRoom.setSouth(office);
+
+      garage.setNorth(entrance);
+      garage.setSouth(bathRoom);
+
+      bedRoom.setSouth(hallWay);
+
+      office.setNorth(diningRoom);
+      office.setSouth(livingRoom);
+
+      bathRoom.setNorth(garage);
+      bathRoom.setEast(hallWay);
+
+      hallWay.setNorth(bedRoom);
+      hallWay.setWest(bathRoom);
+      hallWay.setEast(livingRoom);
+
+      livingRoom.setNorth(office);
+      livingRoom.setWest(hallWay);
+
+
+      // Create and add weapons to rooms
+      MeleeWeapon knife = new MeleeWeapon("knife", 10);
+      kitchen.addItem(knife);
+
+      MeleeWeapon hammer = new MeleeWeapon("hammer", 50);
+      garage.addItem(hammer);
+
+      MeleeWeapon axe = new MeleeWeapon("axe", 20);
+      bathRoom.addItem(axe);
+
+      MeleeWeapon sword = new MeleeWeapon("sword", 20);
+      livingRoom.addItem(sword);
+
+      RangedWeapon pistol = new RangedWeapon("gun", 10, 1);
+      garage.addItem(pistol);
+
+      // Create enemies and add them to rooms
+      Enemy enemy1 = new Enemy("Orc", 50, new MeleeWeapon("sword", 20));
+      livingRoom.addEnemy(enemy1);
+
+      Enemy enemy2 = new Enemy("Masked man", 60, new MeleeWeapon("axe", 25));
+      bathRoom.addEnemy(enemy2);
+
+      // Create Food objects and add them to rooms
+      Food apple = new Food("apple" , 30);
+      kitchen.addFood(apple);
+
+      Food pizza = new Food("pizza", 20);
+      diningRoom.addFood(pizza);
+
+      Food bread = new Food("bread", 30);
+      hallWay.addFood(bread);
+
+      Food orcsMeat = new Food("orcs meat", -30);
+      livingRoom.addFood(orcsMeat);
 
 // Create and add items to rooms
-        Item noteEntrance = new Item("note1");
-        entrance.addItem(noteEntrance);
+      Item noteEntrance = new Item("note1");
+      entrance.addItem(noteEntrance);
 
-        Item knife = new Item("knife");
-        kitchen.addItem(knife);
+      Item foodBread = new Item("bread");
+      kitchen.addItem(foodBread);
 
-        Item foodBread = new Item("bread");
-        kitchen.addItem(foodBread);
+      Item noteGarage = new Item("note2");
+      garage.addItem(noteGarage);
 
-        Item hammer = new Item("hammer");
-        garage.addItem(hammer);
+      Item deadBodyDiningroom = new Item("dead body");
+      diningRoom.addItem(deadBodyDiningroom);
 
-        Item noteGarage = new Item("note2");
-        garage.addItem(noteGarage);
+      Item deadBodyBathroom = new Item("dead body");
+      bathRoom.addItem(deadBodyBathroom);
 
-        Item deadBodyDiningroom = new Item("dead body");
-        diningRoom.addItem(deadBodyDiningroom);
+      Food appleee = new Food("apple", 10);
+      hallWay.addFood(appleee);
 
-        Item deadBodyBathroom = new Item("dead body");
-        bathRoom.addItem(deadBodyBathroom);
-
-        Item bathroomKey = new Item("key");
-        bathRoom.addItem(bathroomKey);
-
-        Item noteLivingroom = new Item("note3");
-        livingRoom.addItem(noteLivingroom);
-
-        Item foodApple = new Item("apple");
-        hallWay.addItem(foodApple);
-
-        Item jarKey = new Item("key stuck in a jar");
-        bedRoom.addItem(jarKey);
-     }
+   }
 
 
 
