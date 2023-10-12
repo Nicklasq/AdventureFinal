@@ -60,7 +60,6 @@ public class Adventure {
                     player.getCurrent().removeEnemy(enemy);
                 } else if (player.getHealth() <= 0) {
                     isRunning = false;
-                    won = false;
                 }
             } else {
 
