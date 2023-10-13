@@ -21,7 +21,7 @@ public class UserInterface {
 
     public void printRoomItems(Room room){
         System.out.println("Current room name: " + room.getName());
-        String line = "You look around and see these items in the " + room.getName();
+        String line = "You look around and see these items in the " + room.getName() + ": ";
 
         System.out.println(line);
 
@@ -76,7 +76,8 @@ public class UserInterface {
                         type "attack" to attack with weapon equipped | 
                         type "eat" to eat food and gain health       | 
                         type "equip or "unequip" to equip and unequip| 
-                         weapons                                     |            
+                         weapons                                     |
+                        type "use key" to use key to escape          |         
                                                                      | 
                         Menu and Help Commands:                      |        
                         Type "help" to display this help menu.       |          
